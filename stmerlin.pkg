@@ -1,0 +1,8 @@
+v 3
+d stmerlin: Convenience wrapper for estimating a parametric and semi-parametric survival model with merlin, optionally including multiple timescales
+d Author: Michael Crowther
+d Distribution-Date: 20230816
+f stmerlin/stmerlin.ado
+f stmerlin/stmerlin.sthlp
+f stmerlin/stmerlin_postestimation.sthlp
+e

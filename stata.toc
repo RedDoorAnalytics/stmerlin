@@ -1,0 +1,3 @@
+v 3
+d Stata package for fitting flexible survival models
+p stmerlin
