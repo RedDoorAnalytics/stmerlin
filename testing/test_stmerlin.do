@@ -1,13 +1,8 @@
-//local drive Z:/
-local drive /Users/Michael/Documents/merlin
+local drive /Users/michael/My Drive/products/stmerlin
 cd "`drive'"
 adopath ++ "`drive'"
-adopath ++ "`drive'/merlin"
 adopath ++ "`drive'/stmerlin"
 clear all
-
-tr:do ./build/buildmlib.do
-mata mata clear
 
 set seed 72549
 
@@ -27,7 +22,7 @@ stmerlin trt age if _n<1000, dist(rp) df(3) tvc(age) dftvc(2) showinit
 merlin (_t trt age age#rcs(_t, df(2) log orthog event) if _n<1000, family(rp, df(3) failure(_d)))
 
 
-// // stmerlin trt age age#rcs(_t, df(2) log orthog event), dist(rp) df(3) 
+// stmerlin trt age age#rcs(_t, df(2) log orthog event), dist(rp) df(3) 
 
 // stmerlin trt age, dist(rp) df(3)
 
