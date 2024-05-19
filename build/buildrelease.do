@@ -3,13 +3,13 @@
 // --> run whole do file
 
 
-local drive /Users/Michael/My Drive/products
+local drive /Users/Michael/My Drive/software
 cd "`drive'/stmerlin/"
 
 //============================================================================//
 
 //build new release -> current version up is 1.0.0
-local newversion 1_0_0
+local newversion 1_1_0
 
 cap mkdir ./release/version_`newversion'
 local fdir "`drive'/stmerlin/release/version_`newversion'/"
