@@ -198,7 +198,8 @@ program Estimate, eclass
         }
         
         //final family
-        local familydef family(`family', failure(_d) `bhazard' `ltruncated' `df1' `knots1' `noorthog1')
+        local familydef family(`family', failure(_d) `bhazard' `ltruncated' ///
+		`df1' `knots1' `noorthog1')
 							
 	//===================================================================//
 	// build tvcs
@@ -206,7 +207,8 @@ program Estimate, eclass
         //tvcs
         if "`tvc'"!="" {
                 
-                if "`family'"=="ggamma" | "`family'"=="lognormal" | "`family'"=="loglogistic" {
+                if "`family'"=="ggamma" | "`family'"=="lognormal" | 	///
+			"`family'"=="loglogistic" {
                         di as error "tvc() not supported with family(ggamma|lognormal|loglogistic)"
                         exit 198
                 }
@@ -233,14 +235,17 @@ program Estimate, eclass
                 
                 if `Ntvcdf1'==1 {
                         foreach var in `tvc1' {
-                                local tvcs `tvcs' `var'#rcs(_t, df(`dftvc1') event `tvclog' `tvcorthog')
+                                local tvcs `tvcs' `var'#rcs(_t, df(`dftvc1') ///
+					event `tvclog' `tvcorthog')
                         }
                 }
                 else {
                         local ind = 1
                         foreach var in `tvc1' {
                                 local dftvcv1 : word `ind' of `dftvc1'
-                                local tvcs `tvcs' `var'#rcs(_t, df(`dftvcv1') event `tvclog' `tvcorthog')
+                                local tvcs `tvcs' `var'#rcs(_t, 	///
+					df(`dftvcv1') event `tvclog' 	///
+					`tvcorthog')
                                 local ind = `ind' + 1
                         }
                 }
@@ -256,18 +261,18 @@ program Estimate, eclass
                 if "`time`ts''"!="" {
                         
                         local 0 , `time`ts''
-                        syntax ,	[								///
-                                                        OFFset(passthru)			///
-                                                        MOFFset(passthru)			///
-                                                        DF(numlist max=1 int >0)	///
-                                                        KNOTS(numlist min=2)		///
-                                                        NOORTHog					///
-                                                        TIME						///
-                                                                                                                ///
-                                                        TVC(varlist)				///
-                                                        DFTvc(numlist)				///
-                                                        TVCTime						///
-                                                ]
+                        syntax ,	[				///
+						OFFset(passthru)	///
+						MOFFset(passthru)	///
+						DF(numlist max=1 int >0) ///
+						KNOTS(numlist min=2)	///
+						NOORTHog		///
+						TIME			///
+									///
+						TVC(varlist)		///
+						DFTvc(numlist)		///
+						TVCTime			///
+					]
                         
                         local offset`ts' `offset'
                         local moffset`ts' `moffset'
@@ -293,7 +298,9 @@ program Estimate, eclass
                                 local Ndf`ts' = `df'
                         }
                         
-                        local multitimes `multitimes' rcs(_t, `offset' `moffset' `event`ts'' `knotsopt`ts'' `orthog`ts'' `log`ts'')
+                        local multitimes `multitimes' rcs(_t, `offset' 	///
+				`moffset' `event`ts'' `knotsopt`ts'' 	///
+				`orthog`ts'' `log`ts'')
 
                         if "`tvc'"!="" {
                                 
@@ -325,7 +332,7 @@ program Estimate, eclass
                 
         }
 		
-	//==============================================================================================================================================//
+	//====================================================================//
 	// starting values
         
         local qui quietly
@@ -333,7 +340,9 @@ program Estimate, eclass
                 local qui
         }
 
-        if "`family'"=="rp" & "`from'"=="" & !strpos("`anything'","(") {
+        if "`family'"=="rp" & "`from'"=="" 	///
+		& !strpos("`anything'","(") 	///
+		& "`c(prefix)'"!="morgana" {
                 
                 //fit df1 model first
                 local tvctest = 0
@@ -359,11 +368,14 @@ program Estimate, eclass
                 
                         di as text "Obtaining initial values"
                 
-                        local family0 family(`family', failure(_d) `bhazard' `ltruncated' df(1) `noorthog1')
+                        local family0 family(`family', failure(_d) 	///
+				`bhazard' `ltruncated' df(1) `noorthog1')
                         
                         if "`tvc'"!="" {
                                 foreach var in `tvc' {
-                                        local tvcs0 `tvcs0' `var'#rcs(_t, df(1) `tvclog' `tvcorthog')
+                                        local tvcs0 `tvcs0' 		///
+						`var'#rcs(_t, df(1) 	///
+						`tvclog' `tvcorthog')
                                 }
                         }
                         
@@ -371,7 +383,10 @@ program Estimate, eclass
         
                                 if "`time`ts''"!="" {
                                         
-                                        local multitimes0 `multitimes0' rcs(_t, `offset`ts'' `moffset`ts'' `event`ts'' df(1) `orthog`ts'' `log`ts'')
+                                        local multitimes0 `multitimes0' ///
+						rcs(_t, `offset`ts'' 	///
+						`moffset`ts'' `event`ts'' ///
+						df(1) `orthog`ts'' `log`ts'')
                                         
                                         if "`tvc`ts''"!="" {
                                                 foreach var in `tvc`ts'' {
@@ -496,7 +511,7 @@ program Estimate, eclass
                 }
                 
         }
-        else if "`family'"=="cox" & "`from'"=="" {
+        else if "`family'"=="cox" & "`from'"=="" & "`c(prefix)'"!="morgana" {
         
                 di as text "Obtaining initial values"
         

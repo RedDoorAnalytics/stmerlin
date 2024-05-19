@@ -1,4 +1,11 @@
-*! version 1.0.0  16aug2023
+*! version 1.1.0  20may2024
+
+/*
+History
+20may2024 v1.1.0:
+- firth option added to fit the Cox model with Firth correction
+*/
+
 
 program stmerlin, eclass sortpreserve properties(st)
 	version 15.1
@@ -34,6 +41,7 @@ program Estimate, eclass
                                                                 ///
                         NOCONStant				///
                         BHazard(passthru)		        ///
+			FIRTH					///
                                                                 ///
                         DEBUG					///
                                                                 ///
@@ -47,12 +55,13 @@ program Estimate, eclass
                         CHINTPoints(passthru)                   ///
                         EVALtype(passthru)                      ///
                         NOGEN                                   ///
+			MERLINOPTS(string)			///
                         *					/// -mlopts-
                 ]						//
 
 	//===================================================================//		
 	// error checks and setup
-		
+
         local vars `anything'
         
         local family "`distribution'"
@@ -149,7 +158,7 @@ program Estimate, eclass
                         di as error "{bf:bhazard()} not supported with the Cox model"
                         exit 198
                 }
-                if "`evaltype'"=="" {
+                if "`evaltype'"=="" & "`firth'"=="" {
                         local evaltype evaltype(gf2)
                 }
         }
@@ -199,7 +208,7 @@ program Estimate, eclass
         
         //final family
         local familydef family(`family', failure(_d) `bhazard' `ltruncated' ///
-		`df1' `knots1' `noorthog1')
+		`df1' `knots1' `noorthog1' `firth')
 							
 	//===================================================================//
 	// build tvcs
@@ -556,9 +565,9 @@ program Estimate, eclass
                 `mlopts'						///
                 `chintpoints'                                           ///
                 `evaltype'                                              ///
+		`merlinopts'						///
                 `eform'                                                 //
-
-
+		
 end
 
 program Replay

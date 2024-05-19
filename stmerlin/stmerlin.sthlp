@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 0.1.0  ?????2017}{...}
+{* *! version 1.1.0  20may2024}{...}
 {vieweralsosee "stmerlin postestimation" "help stmerlin_postestimation"}{...}
 {vieweralsosee "merlin" "help merlin"}{...}
 {title:Title}
@@ -46,6 +46,7 @@ a simple {varlist}, to directly specifying spline or fractional polynomial funct
 {synopt :{opth dftvc(numlist)}}degrees of freedom for each time-dependent effect{p_end}
 {synopt :{opt tvctime}}use splines of time rather than log time for time-dependent effects{p_end}
 {synopt :{opt noorth:og}}turns off the default orthogonalisation of any spline terms{p_end}
+{synopt :{opt firth}}apply the Firth correction; only allowed with {cmd:distribution(cox)}{p_end}
 {synopt :{opth bh:azard(varname)}}expected event rate at event times, invokes a relative survival model{p_end}
 {synopt :{opt chintp:oints(#)}}set the number of integration points to calculate the cumulative hazard function{p_end}
 {synopt:{bf:time#(}{help stmerlin##mt_opts:{it:mt_opts}})}define two to five additional timescales modelled with restricted cubic 
@@ -89,7 +90,7 @@ the timescale{p_end}
 {cmd:stmerlin} fits survival models, including a range of parametric distributions, flexible spline-based models, and the 
 Cox model, possibly including multiple timescales. It is a convenience wrapper of the more powerful {helpb merlin} command, 
 but with a much more user-friendly syntax. Time-dependent effects can be specified using restricted cubic splines through options, 
-or in alternative ways using {helpb merlin}'s linear predictor syntax. For predictions available post-estimation, see 
+or in alternative ways using {helpb merlin}'s extended linear predictor syntax. For predictions available post-estimation, see 
 {helpb stmerlin postestimation}.
 {p_end}
 
@@ -157,6 +158,8 @@ specified, then the same degrees of freedom are applied to all {cmd:tvc()}s, oth
 the default of log time.
 
 {phang}{opt noorthog} suppresses orthogonal transformation of spline variables.
+
+{phang}{opt firth} applies the Firth correction. Only available with {cmd:distribution(cox)}. Note, the reported vaiance-covariance matrix, and hence standard errors, are calculated from the unpenalised Hessian evaluated at the MLEs. 
 
 {phang}{opth bhazard(varname)} invokes a relative survival (excess hazard) model, by specifying the expected event rate in the reference 
 population at the observed event times.
