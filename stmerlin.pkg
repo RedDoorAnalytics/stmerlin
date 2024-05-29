@@ -1,7 +1,7 @@
 v 3
 d stmerlin: Parametric and semi-parametric survival models, optionally including multiple timescales
 d Author: Michael Crowther
-d Distribution-Date: 20240520
+d Distribution-Date: 20240529
 f stmerlin/stmerlin.ado
 f stmerlin/stmerlin.sthlp
 f stmerlin/stmerlin_postestimation.sthlp
