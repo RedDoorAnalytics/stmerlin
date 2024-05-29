@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.1.0  20may2024}{...}
+{* *! version 1.1.1  29may2024}{...}
 {vieweralsosee "stmerlin postestimation" "help stmerlin_postestimation"}{...}
 {vieweralsosee "merlin" "help merlin"}{...}
 {title:Title}
@@ -97,7 +97,7 @@ or in alternative ways using {helpb merlin}'s extended linear predictor syntax. 
 {pstd}
 The {helpb merlin} command fits an extremely broad class of mixed effects regression models for linear, non-linear and 
 user-defined outcomes. For full details and many tutorials, take a look at the accompanying website: 
-{browse "https://reddooranalytics.se/products/merlin":{bf:reddooranalytics.se/products/merlin}}
+{browse "https://reddooranalytics.se/software/merlin":{bf:reddooranalytics.se/software/merlin}}
 {p_end}
 
 
