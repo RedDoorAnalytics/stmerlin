@@ -1,4 +1,4 @@
-local drive /Users/michael/My Drive/products/stmerlin
+local drive /Users/michael/My Drive/software/stmerlin
 cd "`drive'"
 adopath ++ "`drive'"
 adopath ++ "`drive'/stmerlin"

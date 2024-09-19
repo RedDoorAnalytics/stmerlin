@@ -53,6 +53,7 @@ Syntax for predictions following a {helpb stmerlin} model
 {synopt :{opt at(at_spec)}}specify covariate values for prediction{p_end}
 {synopt :{opt zero:s}}set all covariates to zero{p_end}
 {synopt :{opt stand:ardise}}compute {it:statistic} marginally with respect to the independent variables{p_end}
+{synopt :{opt standif(expr)}}specify an if statement to restrict the observations that will be standardised over{p_end}
 {synopt :{opt at1(at_spec)}}specify covariate values for prediction; for use with difference and ratio predictions{p_end}
 {synopt :{opt at2(at_spec)}}specify covariate values for prediction; for use with difference and ratio predictions{p_end}
 {synopt :{opt ci}}calculate confidence intervals{p_end}
@@ -166,6 +167,9 @@ that it {cmd:at1()} and {cmd:at2()} are specified, then {cmd:zeros} applies to b
 marginally with respect to the independent variables. This is implemented by calculating the {it:statistic} 
 at all observed covariate patterns, and taking the average. Can be used in combination with {cmd:at()}, or {cmd:at1()} and 
 {cmd:at2()} to obtain causal estimands/contrasts.
+
+{phang}
+{cmd:standif({it:expr})} specifies an if expression to restrict the sample to standardise over, such as {cmd: standif(trt==1)}.
 
 {phang}
 {opt at1(varname # [ varname # ...])} does the same as {cmd:at()} but for use in conjunction with {cmd:?difference} or 
