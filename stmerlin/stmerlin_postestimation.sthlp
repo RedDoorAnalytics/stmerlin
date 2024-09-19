@@ -52,6 +52,7 @@ Syntax for predictions following a {helpb stmerlin} model
 {syntab:Main}
 {synopt :{opt at(at_spec)}}specify covariate values for prediction{p_end}
 {synopt :{opt zero:s}}set all covariates to zero{p_end}
+{synopt :{opt stand:ardise}}compute {it:statistic} marginally with respect to the independent variables{p_end}
 {synopt :{opt at1(at_spec)}}specify covariate values for prediction; for use with difference and ratio predictions{p_end}
 {synopt :{opt at2(at_spec)}}specify covariate values for prediction; for use with difference and ratio predictions{p_end}
 {synopt :{opt ci}}calculate confidence intervals{p_end}
@@ -159,6 +160,12 @@ is used together with {cmd:zeros}, all covariates not listed in {cmd:at()} are s
 {opt zeros} sets all covariates to zero. See also {cmd:at()}. Note, any response variables will be skipped, i.e. not set 
 to zero, so if a response variable for one model is included as a covariate in another - it will {it:not} be set to zero. Also note 
 that it {cmd:at1()} and {cmd:at2()} are specified, then {cmd:zeros} applies to both.
+
+{phang}
+{cmd:standardise} specifies that the predicted {it:statistic} be computed
+marginally with respect to the independent variables. This is implemented by calculating the {it:statistic} 
+at all observed covariate patterns, and taking the average. Can be used in combination with {cmd:at()}, or {cmd:at1()} and 
+{cmd:at2()} to obtain causal estimands/contrasts.
 
 {phang}
 {opt at1(varname # [ varname # ...])} does the same as {cmd:at()} but for use in conjunction with {cmd:?difference} or 
