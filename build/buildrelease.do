@@ -9,7 +9,7 @@ cd "`drive'/stmerlin/"
 //============================================================================//
 
 //build new release -> current version up is 1.1.1
-local newversion 1_1_1
+local newversion 1_1_2
 
 cap mkdir ./release/version_`newversion'
 local fdir "`drive'/stmerlin/release/version_`newversion'/"

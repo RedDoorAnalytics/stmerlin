@@ -1,0 +1,17 @@
+TITLE: `STMERLIN' : convenience wrapper for estimating a parametric and 
+semi-parametric survival model with merlin, optionally including multiple 
+timescales
+
+
+DESCRIPTION/AUTHOR: stmerlin fits survival models, including a range of 
+parametric distributions, flexible spline-based models, and the Cox model, 
+possibly including multiple timescales. It is a convenience wrapper of the 
+more powerful merlin command, but with a much more user-friendly syntax. 
+Time-dependent effects can be specified using restricted cubic splines 
+through options, or in alternative ways using merlin's linear predictor 
+syntax. For predictions available post-estimation, see stmerlin postestimation.
+
+Author: Michael J. Crowther, Red Door Analytics
+Support: email michael@reddooranalytics.se
+
+Requires: Stata version 15.1
