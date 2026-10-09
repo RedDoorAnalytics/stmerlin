@@ -31,7 +31,7 @@ net install merlin, from("https://reddooranalytics.se/install/stata/merlin/2.5.0
 ## Installation
 
 ```stata
-net install stmerlin, from("https://raw.githubusercontent.com/RedDoorAnalytics/stmerlin/main/")
+net install stmerlin, from("https://reddooranalytics.se/install/stata/stmerlin/latest/")
 ```
 
 ## Example
